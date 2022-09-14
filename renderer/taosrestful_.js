@@ -11,12 +11,12 @@ module.exports = {
             },
             timeout: payload.timeout
         })
-        if (res.data.status == 'succ'){
+        if (res.status == '200'){
             // console.log(res.data.data)
             // console.log(res.data.rows)
             // console.log(res.data.head)
-            let head  = res.data.head
-            let resData = res.data.data.map(item => Object.fromEntries(head.map((a,b)=>[a,item[b]])))
+            let head  = res.data.column_meta.map(item=>[item[0]=="ttl"?"'ttl'":item[0]=="value"?"'value'":item[0]])
+            let resData = res.data.data.map(item => Object.fromEntries(head.map((a, b) => [a, item[b]])))
             return  {'res':true,'count':res.data.rows,'data':resData}
         }else{
             return {'res':false,'msg':res.data.desc,'code':res.data.code}

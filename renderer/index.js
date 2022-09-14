@@ -139,6 +139,10 @@ new Vue({
         //新建连接，先连接，如果成功，将payload+name记入本地
         //var tr = new TaosRestful("121.36.56.117","6041","root","msl110918")
         let payload = {
+          // ip:"localhost",
+          // port:"6041",
+          // user:"root",
+          // password:"taosdata"
           ip:this.linkForm.host,
           port:this.linkForm.port,
           user:this.linkForm.user,
